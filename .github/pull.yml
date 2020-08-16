@@ -1,0 +1,9 @@
+version: “1”
+rules:
+  - base: mod
+    upstream: gdtool:master
+    mergeMethod: merge
+  - base: master
+    upstream: gdtool:master
+    mergeMethod: hardreset
+label: “:arrow_heading_down: pull”
