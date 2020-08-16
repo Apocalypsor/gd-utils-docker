@@ -1,0 +1,24 @@
+name: Update from upstream
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-16.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Update from upstream
+      run: |
+        u_commit=$(curl -n https://api.github.com/repos/iwestlin/gd-utils/commits | grep -o '[0-9a-z]\{40\}' | head -n 1 | cut -c1-7)
+        sed -i "s/UPSTREAM_COMMIT=[0-9a-z]\{7\}/UPSTREAM_COMMIT=$u_commit/g" Dockerfile
+    - uses: autosuite/autocommit@master
+      with:
+        commit-message: Update gd-utils
+        add-options: -A
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.REPO_TOKEN }}
