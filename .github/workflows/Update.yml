@@ -22,3 +22,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.REPO_TOKEN }}
+        branch: mod
