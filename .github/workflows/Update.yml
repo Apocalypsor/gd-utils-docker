@@ -12,8 +12,8 @@ jobs:
       uses: actions/checkout@master
     - name: Update from upstream
       run: |
-        u_commit=$(curl -n https://api.github.com/repos/iwestlin/gd-utils/commits | grep -o '[0-9a-z]\{40\}' | head -n 1 | cut -c1-7)
-        sed -i "s/UPSTREAM_COMMIT=[0-9a-z]\{7\}/UPSTREAM_COMMIT=$u_commit/g" Dockerfile
+        u_commit=$(curl -s -N https://api.github.com/repos/iwestlin/gd-utils/commits | grep -o '[0-9a-z]\{40\}' | head -n 1 | cut -c1-7)
+        [ $u_commit ] && sed -i "s/UPSTREAM_COMMIT=[0-9a-z]\{7\}/UPSTREAM_COMMIT=$u_commit/g" Dockerfile
     - uses: autosuite/autocommit@master
       with:
         commit-message: Update gd-utils
