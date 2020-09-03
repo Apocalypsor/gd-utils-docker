@@ -3,6 +3,7 @@ MAINTAINER Apocalypsor
 ARG UPSTREAM_COMMIT=9defd5b
 
 USER root
+ENV USERPWD mysec55rdet9966
 
 ADD start.sh /
 RUN chmod +x /start.sh
