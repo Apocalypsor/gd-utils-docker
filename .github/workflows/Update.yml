@@ -1,6 +1,9 @@
 name: Update from upstream
 
 on:
+  push:
+    branches: 
+      - mod
   schedule:
     - cron: "0 * * * *"
 
