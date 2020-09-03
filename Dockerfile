@@ -5,6 +5,7 @@ ARG UPSTREAM_COMMIT=9defd5b
 USER root
 
 ADD start.sh /
+RUN chmod +x /start.sh
 
 RUN set -ex \
         && apk update \
