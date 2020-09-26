@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
     - name: Update from upstream
       run: |
         u_commit=$(curl -s -N https://api.github.com/repos/iwestlin/gd-utils/commits | grep -o '[0-9a-z]\{40\}' | head -n 1 | cut -c1-7)
         [ $u_commit ] && sed -i "s/UPSTREAM_COMMIT=[0-9a-z]\{7\}/UPSTREAM_COMMIT=$u_commit/g" Dockerfile
-    - uses: autosuite/autocommit@master
+    - uses: autosuite/autocommit@main
       with:
         commit-message: Update gd-utils
         add-options: -A
