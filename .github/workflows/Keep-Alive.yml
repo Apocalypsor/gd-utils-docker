@@ -3,8 +3,8 @@ name: Keep Alive
 on:
   workflow_dispatch:
   
-  schedule:
-    - cron: 0 0 */30 * *
+  # schedule:
+  #   - cron: 0 0 */30 * *
 
 jobs:
   keep-alive:
